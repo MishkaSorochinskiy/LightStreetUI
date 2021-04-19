@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule} from 'angular-bootstrap-md';
+import { HomeComponent } from './pages/home/home.component';
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    MapComponent
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
