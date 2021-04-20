@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { DemoComponent } from './demo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;

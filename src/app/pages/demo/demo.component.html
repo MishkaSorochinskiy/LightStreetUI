@@ -1,0 +1,42 @@
+<div class="container-fluid h-75">
+    <div class="row h-75 d-flex align-items-end">
+        <div class="col-md-4 m-0 d-flex justify-content-end">
+                <img id="upload-image" (click)="upload()" src="../../../assets/images/upload.png">
+                <input type="file" id="upload" (change)="handleUpload($event.target.files)"/>
+        </div>
+        <div class="col-md-4 m-0 p-0">
+            <form [formGroup]="demoForm">
+                <div class="form-outline mb-3">
+                  <input type="number" id="lightness" aria-label="readonly input example" class="form-control" placeholder="Lightness" formControlName="lightness"/>
+                </div>
+              
+                <div class="form-outline mb-3">
+                  <input type="number" class="form-control" placeholder="Power" formControlName="power"/>
+                </div>
+
+                <div class="form-outline mb-3">
+                    <input type="number" class="form-control" placeholder="Distance" formControlName="distance"/>
+                </div>
+
+                <div class="form-outline mb-3">
+                    <select class="form-control form-select" formControlName="type">
+                        <option value="0">Incandescent</option>
+                        <option value="1">Led</option>
+                        <option value="2">Halogen</option>
+                      </select>
+                </div>
+
+                <div class="form-outline mb-3">
+                    <select class="form-control form-select" formControlName="material">
+                        <option value=0>Glass</option>
+                        <option value=1>Wood</option>
+                        <option value=2>Steel</option>
+                      </select>
+                </div>
+              
+                <button type="button" (click)="submitted()" class="btn btn-block grey waves-light">Calculate</button>
+            </form>
+        </div>
+        <div class="col-md-4 m-0 p-0">
+        </div>
+</div>
