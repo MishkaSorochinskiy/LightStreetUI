@@ -1,21 +1,54 @@
 <div class="container-fluid h-75">
     <div class="row h-75 d-flex align-items-end">
-        <div class="col-md-4 m-0 d-flex justify-content-end">
-                <img id="upload-image" (click)="upload()" src="../../../assets/images/upload.png">
+        <div class="col-md-4 m-0 pr-3 d-flex justify-content-end">
+                <img id="upload-image" (click)="upload()" [src]="detectImg">
                 <input type="file" id="upload" (change)="handleUpload($event.target.files)"/>
         </div>
         <div class="col-md-4 m-0 p-0">
             <form [formGroup]="demoForm">
                 <div class="form-outline mb-3">
                   <input type="number" id="lightness" aria-label="readonly input example" class="form-control" placeholder="Lightness" formControlName="lightness"/>
+                    <div *ngIf="demoForm.controls['lightness'].invalid && issubmitted" class="text-danger">           
+                        <div *ngIf="demoForm.controls['lightness'].errors.required">
+                          Lightness is required.
+                        </div>
+                        <div *ngIf="demoForm.controls['lightness'].errors.min">
+                          Lightness must be greater then 15.
+                        </div>
+                        <div *ngIf="demoForm.controls['lightness'].errors.max">
+                          Lightness must be less then 100.
+                        </div>     
+                      </div>
                 </div>
               
                 <div class="form-outline mb-3">
                   <input type="number" class="form-control" placeholder="Power" formControlName="power"/>
+                  <div *ngIf="demoForm.controls['power'].invalid && issubmitted" class="text-danger">           
+                    <div *ngIf="demoForm.controls['power'].errors.required">
+                      Power is required.
+                    </div>
+                    <div *ngIf="demoForm.controls['power'].errors.min">
+                      Power must be greater then 60.
+                    </div>
+                    <div *ngIf="demoForm.controls['power'].errors.max">
+                      Power must be less then 400.
+                    </div>     
+                  </div>
                 </div>
 
                 <div class="form-outline mb-3">
                     <input type="number" class="form-control" placeholder="Distance" formControlName="distance"/>
+                    <div *ngIf="demoForm.controls['distance'].invalid && issubmitted" class="text-danger">           
+                      <div *ngIf="demoForm.controls['distance'].errors.required">
+                        Distance is required.
+                      </div>
+                      <div *ngIf="demoForm.controls['distance'].errors.min">
+                        Distance must be greater then 0.5.
+                      </div>
+                      <div *ngIf="demoForm.controls['distance'].errors.max">
+                        Distance must be less then 25.
+                      </div>     
+                    </div>
                 </div>
 
                 <div class="form-outline mb-3">
@@ -24,6 +57,11 @@
                         <option value="1">Led</option>
                         <option value="2">Halogen</option>
                       </select>
+                      <div *ngIf="demoForm.controls['type'].invalid && issubmitted" class="text-danger">           
+                        <div *ngIf="demoForm.controls['type'].errors.required">
+                          Type is required.
+                        </div>
+                      </div>
                 </div>
 
                 <div class="form-outline mb-3">
@@ -32,11 +70,17 @@
                         <option value=1>Wood</option>
                         <option value=2>Steel</option>
                       </select>
+                      <div *ngIf="demoForm.controls['material'].invalid && issubmitted" class="text-danger">           
+                        <div *ngIf="demoForm.controls['material'].errors.required">
+                          Material is required.
+                        </div>
+                      </div>
                 </div>
               
                 <button type="button" (click)="submitted()" class="btn btn-block grey waves-light">Calculate</button>
             </form>
         </div>
-        <div class="col-md-4 m-0 p-0">
+        <div class="col-md-4 m-0 p-0 pl-3">
+          <img [src]="'../../../assets/images/'+lampImg">
         </div>
 </div>
